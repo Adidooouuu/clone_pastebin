@@ -1,6 +1,8 @@
 <?php
   error_reporting(E_ALL);
   ini_set("display_errors", 1);
+
+  include('../../config.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -31,7 +33,7 @@
 
         $random_id = genererChaineAleatoire(5). + time();
 
-        $url = $_SERVER["PHP_SELF"]. "/" .$random_id;
+        $url = constant("WEBSITE") .$_SERVER["PHP_SELF"]. "/" .$random_id;
       }
     ?>
 
