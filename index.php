@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
-    <meta charset="utf-8">
+    <?php require("templates/head.html"); ?>
     <title>Accueil</title>
   </head>
   <body>
-
+    <?php require("templates/form.php"); ?>
   </body>
 </html>

@@ -1,0 +1,114 @@
+*, *::before, *::after
+{
+  margin : 0;
+  padding : 0;
+  box-sizing : border-box;
+}
+
+:root
+{
+  --main_color : #252525;
+  --secondary-color : #292929;
+  --third-color : #D4D4D4;
+  --shadow : 0px 0px 2px 2px rgba(43,43,43,0.75); /* #2B2B2B */
+  --border-radius : 3px;
+}
+
+body, *
+{
+  background-color : var(--main_color);
+  color : var(--third-color);
+  font-family : "Segoe UI", sans-serif;
+}
+
+a
+{
+  text-decoration : none;
+}
+
+.container
+{
+  display : flex;
+  flex-flow : row wrap;
+  padding : 10px;
+  padding-top : 0;
+}
+
+.main_form
+{
+  display : flex;
+  flex-flow : column wrap;
+  flex : 1 1 75%;
+}
+
+.fieldset_options
+{
+  flex-flow : row nowrap;
+  border : none;
+  margin-top : 11.5px;
+}
+
+.fieldset_options > legend
+{
+  margin : 0.75ch 0;
+}
+
+.label_textarea, .label_text
+{
+  margin : 0.75ch 0;
+}
+
+.label_textarea
+{
+  font-weight : bold;
+}
+
+.label_text
+{
+  font-size : 12.8px;
+}
+
+textarea, input[type="text"]
+{
+  border : 1px solid #BBBBBB;
+  overflow : hidden;
+  overflow-wrap : break-word;
+  padding : 10px;
+}
+
+textarea
+{
+  height : 300px;
+}
+
+textarea:focus, input[type="text"]:focus
+{
+  outline : none;
+}
+
+input[type="submit"]
+{
+  border : none;
+  width : 153px;
+  height : 35px;
+  margin-top : 11.5px;
+  cursor : pointer;
+}
+
+input[type="submit"]:hover
+{
+  text-decoration : underline;
+  border : 1px solid #FFFFFF;
+}
+
+textarea, input[type="submit"]
+{
+  border-radius : var(--border-radius);
+  background-color : var(--secondary-color);
+  box-shadow : var(--shadow);
+}
+
+.fantom
+{
+  flex : 1 1 25%;
+}
