@@ -1,3 +1,3 @@
 <?php
-  define('WEBSITE', 'localhost:4567');
+  define('WEBSITE', 'testmonsite');
 ?>

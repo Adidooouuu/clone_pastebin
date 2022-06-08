@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
-    <?php require("../../templates/head.html"); ?>
+    <?php require("../../templates/head.php"); ?>
     <title>Recap</title>
   </head>
   <body>
@@ -33,7 +33,8 @@
 
         $random_id = genererChaineAleatoire(5). + time();
 
-        $url = constant("WEBSITE") .$_SERVER["PHP_SELF"]. "/" .$random_id;
+        echo $_SERVER["PHP_SELF"];
+        // $url = constant("WEBSITE") .$_SERVER["PHP_SELF"]. "/" .$random_id;
       }
     ?>
 
@@ -43,7 +44,7 @@
         <h1 class="main_title">Recapitulation</h1>
         <p class="shared_text_name"><?php echo "Name: " .$link_name; ?></p>
         <p class="shared_text"><?php echo "Your text content: " .$text_content; ?></p>
-        <p class="sharing_url"><?php echo "Your sharing URL: " .$url ?></p>
+
       </div>
     </div>
   </body>

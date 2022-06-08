@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
-    <?php require("templates/head.html"); ?>
+    <?php require("templates/head.php"); ?>
     <title>Accueil</title>
   </head>
   <body>
