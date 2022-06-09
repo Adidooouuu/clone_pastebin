@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="main_form" action="templates/form_treated.php" method="post">
+  <form class="main_form" action="templates/form_recap.php" method="post">
 
     <label for="text_content" class="label_textarea">New paste</label>
     <textarea name="text_content" required>

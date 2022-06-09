@@ -21,7 +21,7 @@
 
     // URL WITH RANDOM ID
     $random_id = genererChaineAleatoire(5). + time();
-    // $url = constant("WEBSITE") .$_SERVER["PHP_SELF"]. "+" .$random_id;
+    $url = "../shared_pages/$random_id.php";
 
     // ADD DATA TO DB
     $table_add_query = "INSERT INTO shared_link (title, content, random_id) VALUES (:link_name, :text_content, :random_id)";
@@ -33,5 +33,10 @@
                                     "random_id" => $random_id,
                                   ]
                                 );
+
+    // CREATES A DYNAMIC PAGE WITH RANDOM ID AS ITS NAME & APPENDS TEMPLATE
+    $shared_page = fopen($url, "w") or die ("Can't create this file.");
+    // $shared_page = fopen("../templates/form_treated.php", "a") or die ("Can't append this content !");
+    $shared_page = fopen("form_treated.php", "a") or die ("Can't append this content !");
   }
 ?>
