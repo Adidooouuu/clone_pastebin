@@ -1,5 +1,5 @@
 <?php
-  include('../connection_to_db/db_connection.php');
+  include('../data/connection_to_db/db_connection.php');
 
   function genererChaineAleatoire($longueur = 10)
   {
@@ -23,7 +23,7 @@
     $random_id = genererChaineAleatoire(5). + time();
     // $url = constant("WEBSITE") .$_SERVER["PHP_SELF"]. "+" .$random_id;
 
-    // AD DATA TO DB
+    // ADD DATA TO DB
     $table_add_query = "INSERT INTO shared_link (title, content, random_id) VALUES (:link_name, :text_content, :random_id)";
     $insert_new_content = $bdd_connection->prepare($table_add_query);
     $insert_new_content->execute(
@@ -33,6 +33,5 @@
                                     "random_id" => $random_id,
                                   ]
                                 );
-    header("Location: ../../templates/form_treated.php");
   }
 ?>
