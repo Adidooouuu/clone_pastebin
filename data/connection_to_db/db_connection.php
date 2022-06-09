@@ -30,11 +30,9 @@
 
   foreach ($table_fetch as $table_content)
   {
-    ?>
-      <p><?php echo $table_content['title']; ?></p>
-      <p><?php echo $table_content['content']; ?></p>
-      <p><?php echo $table_content['random_id']; ?></p>
-      <p><?php echo $table_content['creation_date']; ?></p>
-    <?php
+      $stocked_title = $table_content['title'];
+      $stocked_content = $table_content['content'];
+      $stocked_random_id = $table_content['random_id'];
+      $stocked_creation_date = $table_content['creation_date'];
   }
 ?>

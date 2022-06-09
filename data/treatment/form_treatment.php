@@ -45,6 +45,4 @@
     $form_treated_path = "../templates/form_treated.php";
     copy($form_treated_path, $url);
   }
-  // $form_treated_path = "../templates/form_treated.php";
-  // copy($form_treated_path, $shared_page);
 ?>
