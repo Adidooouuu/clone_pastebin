@@ -36,7 +36,15 @@
 
     // CREATES A DYNAMIC PAGE WITH RANDOM ID AS ITS NAME & APPENDS TEMPLATE
     $shared_page = fopen($url, "w") or die ("Can't create this file.");
+    // fclose($shared_page);
     // $shared_page = fopen("../templates/form_treated.php", "a") or die ("Can't append this content !");
-    $shared_page = fopen("form_treated.php", "a") or die ("Can't append this content !");
+    // $shared_page = fopen("form_treated.php", "a") or die ("Can't append this content !");
+    // $shared_page_append = fopen($url, "a") or die ("Can't append a thing.");
+    // fwrite($shared_page_append, );
+    // fclose($shared_page_append
+    $form_treated_path = "../templates/form_treated.php";
+    copy($form_treated_path, $url);
   }
+  // $form_treated_path = "../templates/form_treated.php";
+  // copy($form_treated_path, $shared_page);
 ?>
