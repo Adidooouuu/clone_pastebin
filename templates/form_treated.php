@@ -5,7 +5,7 @@
 <html lang="en" dir="ltr">
   <head>
     <?php require("../templates/head.php"); ?>
-    <title><?php echo $stocked_random_id; ?></title>
+    <title><?php echo $stocked_title; ?></title>
   </head>
   <body>
       <h1><?php echo $stocked_title; ?></h1>

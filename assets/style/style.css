@@ -14,6 +14,11 @@
   --border-radius : 3px;
 }
 
+body
+{
+  min-height : 100vh;
+}
+
 body, *
 {
   background-color : var(--main_color);
@@ -24,7 +29,7 @@ body, *
 a
 {
   text-decoration : none;
-  color : var(--third-color);
+  color : orange;
 }
 
 a:hover
@@ -32,19 +37,37 @@ a:hover
   text-decoration : underline;
 }
 
-.container
+[class*="container"]
 {
   display : flex;
-  flex-flow : row wrap;
   padding : 10px;
   padding-top : 0;
 }
 
-.main_form
+.container_placement
+{
+  min-height : 100vh;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+.container
+{
+  flex-flow : row wrap;
+}
+
+.connection_container
+{
+  flex-flow : column wrap;
+  align-items : center;
+}
+
+.main_form, .login_form, .create_account_form
 {
   display : flex;
   flex-flow : column wrap;
   flex : 1 1 75%;
+  justify-content: center;
 }
 
 .fieldset_options
@@ -74,7 +97,17 @@ a:hover
   font-size : 12.8px;
 }
 
-textarea, input[type="text"]
+.account_label
+{
+  margin : 20px 0 5px 0;
+}
+
+.required
+{
+  color : orange;
+}
+
+textarea, input[type="text"], input[type="password"], input[type="email"]
 {
   border : 1px solid #BBBBBB;
   overflow : hidden;
@@ -87,7 +120,7 @@ textarea
   height : 300px;
 }
 
-textarea:focus, input[type="text"]:focus
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus
 {
   outline : none;
 }
@@ -107,7 +140,7 @@ input[type="submit"]:hover
   border : 1px solid #FFFFFF;
 }
 
-textarea, input[type="text"], input[type="submit"]
+textarea, input[type="text"], input[type="password"], input[type="email"], input[type="submit"]
 {
   border-radius : var(--border-radius);
   background-color : var(--secondary-color);
@@ -117,4 +150,9 @@ textarea, input[type="text"], input[type="submit"]
 .fantom
 {
   flex : 1 1 25%;
+}
+
+.cta
+{
+  margin-top : 15px;
 }
