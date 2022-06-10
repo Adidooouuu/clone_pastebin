@@ -1,19 +1,8 @@
 <?php
-  include('../data/connection_to_db/db_connection.php');
+  include("../data/connection_to_db/db_connection.php");
+  include("../functions/random_id_function.php");
 
-  function genererChaineAleatoire($longueur = 10)
-  {
-    $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $longueurMax = strlen($caracteres);
-    $chaineAleatoire = '';
-    for ($i = 0; $i < $longueur; $i++)
-    {
-      $chaineAleatoire .= $caracteres[rand(0, $longueurMax - 1)];
-    }
-    return $chaineAleatoire;
-  }
-
-  if (isset( $_POST['submit']))
+  if (isset($_POST['submit']))
   {
     // PULL FORM DATA
     $link_name = htmlentities($_POST["name_of_paste_sharing"]);

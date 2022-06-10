@@ -1,11 +1,21 @@
 <?php
-  include('../config.php');
+
+  if ($_SERVER["PHP_SELF"] == "index.php")
+  {
+    include('config.php');
+  }
+  else
+  {
+    include('../config.php');
+  }
+
   // DEFINED DATAS
   $hostname = constant("HOST");
   $username = constant('USER');
   $bdd = constant('DBNAME');
   $pwd = constant('PWD');
   $table = constant('LINK_TABLE');
+  $users_table = constant('USERS_TABLE');
 
   // DB CONNECTION
   try
@@ -23,16 +33,31 @@
   }
 
   // PULL DB DATA
-  $table_query = "SELECT * FROM $table";
-  $table_statement = $bdd_connection->prepare($table_query);
-  $table_statement->execute();
-  $table_fetch = $table_statement->fetchAll();
+    // SHARED LINK
+    $table_query = "SELECT * FROM $table";
+    $table_statement = $bdd_connection->prepare($table_query);
+    $table_statement->execute();
+    $table_fetch = $table_statement->fetchAll();
 
-  foreach ($table_fetch as $table_content)
-  {
+    foreach ($table_fetch as $table_content)
+    {
       $stocked_title = $table_content['title'];
       $stocked_content = $table_content['content'];
       $stocked_random_id = $table_content['random_id'];
       $stocked_creation_date = $table_content['creation_date'];
-  }
+    }
+
+    // USERS
+    $users_table_query = "SELECT * FROM $users_table";
+    $users_table_statement = $bdd_connection->prepare($users_table_query);
+    $users_table_statement->execute();
+    $users_table_fetch = $users_table_statement->fetchAll();
+
+    foreach ($users_table_fetch as $user_table_content)
+    {
+      $stocked_user_name = $user_table_content['username'];
+      $stocked_email = $user_table_content['email'];
+      $stocked_password = $user_table_content['pwd'];
+      $stocked_random_id_user = $user_table_content['random_id_for_user'];
+    }
 ?>
