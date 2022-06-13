@@ -1,5 +1,8 @@
-<?php   error_reporting(E_ALL);
+<?php
+  error_reporting(E_ALL);
   ini_set("display_errors", 1);
+
+  include("data/treatment/login_treatment.php");
  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -8,6 +11,9 @@
     <title>Accueil</title>
   </head>
   <body>
-    <?php require("templates/form.php"); ?>
+    <?php
+      echo $welcome;
+      require("templates/form.php");
+    ?>
   </body>
 </html>

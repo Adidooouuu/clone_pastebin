@@ -11,12 +11,12 @@
     <title>Recap</title>
   </head>
   <body>
-    <div class='container'>
-      <div class='recap'>
-        <h1 class='main_title'>Recapitulation</h1>
-          <p class='shared_text_name'><?php echo 'Name: ' .$link_name; ?></p>
-          <p class='shared_text'><?php echo 'Your text content: ' .$text_content; ?></p>
-          <p><?php echo 'Random id: ' .$random_id; "<hr>"; ?></p>
+    <div class="container">
+      <div class="recap">
+        <h1 class="main_title">Recapitulation</h1>
+          <p class="shared_text_name"><?php echo "Name: " .$link_name; ?></p>
+          <p class="shared_text"><?php echo "Your text content: " .$text_content; ?></p>
+          <p><?php echo "Random id: " .$random_id; "<hr>"; ?></p>
           <p>Share your pasted content: </p><a href="<?php echo "$url"; ?>" target="_blank"><?php echo "$url"; ?></a>
       </div>
     </div>

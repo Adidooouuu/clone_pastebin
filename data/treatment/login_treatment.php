@@ -1,8 +1,16 @@
 <?php
-  include('../data/connection_to_db/db_connection.php');
-  // include("../functions/random_id_function.php");
+  $welcome = "";
 
   // PULL FORM DATA
-  $username = htmlentities($_POST["username"]);
-  $password = htmlentities($_POST["password"]);
+  if (!empty($_POST['username']) && !empty($_POST['password']))
+  {
+    $username = htmlentities($_POST["username"]);
+    $password = htmlentities($_POST["password"]);
+
+    if (password_verify($password, $stocked_password))
+    {
+      $welcome = "Welcome, " .$stocked_user_name. "!";
+    }
+  }
+// TODO : à finir c'est cassé c'est normal
 ?>

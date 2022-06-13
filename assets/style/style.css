@@ -130,14 +130,17 @@ input[type="submit"]
   border : none;
   width : 153px;
   height : 35px;
-  margin-top : 11.5px;
+  margin : 30px auto 10px auto;
   cursor : pointer;
 }
 
 input[type="submit"]:hover
 {
-  text-decoration : underline;
-  border : 1px solid #FFFFFF;
+  box-shadow :
+              0px 0px 20px 2px rgba(255, 140, 0, 0.75),
+              0px 0px 5px 2px rgba(255, 140, 0, 0.75),
+              inset 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+  border : 1px solid orange;
 }
 
 textarea, input[type="text"], input[type="password"], input[type="email"], input[type="submit"]
@@ -145,6 +148,7 @@ textarea, input[type="text"], input[type="password"], input[type="email"], input
   border-radius : var(--border-radius);
   background-color : var(--secondary-color);
   box-shadow : var(--shadow);
+  min-width : 30ch;
 }
 
 .fantom
@@ -155,4 +159,14 @@ textarea, input[type="text"], input[type="password"], input[type="email"], input
 .cta
 {
   margin-top : 15px;
+}
+
+.valid
+{
+  color : green;
+}
+
+.error
+{
+  color : red;
 }
