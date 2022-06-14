@@ -1,15 +1,19 @@
 <?php
+
   $welcome = "";
 
   // PULL FORM DATA
-  if (!empty($_POST['username']) && !empty($_POST['password']))
+  if ($users_table_fetch)
   {
-    $username = htmlentities($_POST["username"]);
-    $password = htmlentities($_POST["password"]);
-
-    if (password_verify($password, $stocked_password))
+    if (!empty($_POST['username']) && !empty($_POST['password']))
     {
-      $welcome = "Welcome, " .$stocked_user_name. "!";
+      $username = htmlentities($_POST["username"]);
+      $password = htmlentities($_POST["password"]);
+
+      if (($username == $stocked_user_name) && (password_verify($password, $stocked_password)))
+      {
+        $welcome = "Welcome, " .$stocked_user_name. "!";
+      }
     }
   }
 // TODO : à finir c'est cassé c'est normal

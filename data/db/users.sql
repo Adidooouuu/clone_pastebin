@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 13 juin 2022 à 14:56
+-- Généré le : mar. 14 juin 2022 à 15:55
 -- Version du serveur : 8.0.27
 -- Version de PHP : 7.4.26
 
@@ -35,14 +35,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `pwd` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `random_id_for_user` tinytext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `pwd`, `random_id_for_user`) VALUES
-(31, 'test', 'test@example.com', '$2y$10$qoqufFRR.Ek9S/6DHKdwOOZgm', 'xoflX1655132020');
+(80, 'user_test', 'user@example.com', '$2y$10$t/yMntRhAt2fCjqCUIjFFOgV5', 'ycADZ1655215502');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

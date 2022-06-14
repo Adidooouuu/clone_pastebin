@@ -12,7 +12,7 @@
       <div class="connection_container">
         <h1 class="form_title">Create your account</h1>
         <em><span class="required">*</span> = required</em>
-        <form class="create_account_form" action="user_login_form.php" method="post">
+        <form class="create_account_form" action="user_create_account_form.php" method="post">
 
           <label for="username" class="account_label">Username <span class="required">*</span> (max-length : 20 characters)</label>
           <input type="text" name="username" id="username" autocomplete="on" required>
@@ -32,10 +32,10 @@
               echo $pw_check;
             }
           ?>
-
-          <input type="submit" value="Create" name="submit">
-        </form>
-        <p class="cta">Already have an account? <a href="user_login_form.php">Let's log in!</a></p>
+          <input type='submit' value='Create' name='submit'>
+          <?php
+            echo $form_check;
+          ?>
       </div>
     </div>
   </body>

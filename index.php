@@ -2,6 +2,7 @@
   error_reporting(E_ALL);
   ini_set("display_errors", 1);
 
+  // include('config.php');
   include("data/treatment/login_treatment.php");
  ?>
 <!DOCTYPE html>

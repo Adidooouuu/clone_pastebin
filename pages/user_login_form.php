@@ -11,12 +11,6 @@
   <body>
     <div class="container_placement">
       <div class="connection_container">
-        <?php
-        if (isset($_POST['submit']))
-        {
-          echo $validation_msg;
-        }
-        ?>
         <h1 class="form_title">Login to your account</h1>
         <em><span class="required">*</span> = required</em>
         <form class="login_form" action="../index.php" method="post">
@@ -28,7 +22,7 @@
 
           <input type="submit" value="Login" name="submit">
         </form>
-        <p class="cta">Don't have an account? <a href="user_create_account_form.php">Create one!</a></p>
+        <p class="cta">Don't have an account? <a href="user_create_account_form.php">Let's create one!</a></p>
       </div>
     </div>
   </body>

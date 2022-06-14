@@ -5,7 +5,7 @@
     error_reporting(E_ALL);
     ini_set("display_errors", 1);
 
-  $validation_msg = "";
+  $form_check = "";
   $pw_check = "";
 
   // PULL FORM DATA
@@ -19,10 +19,20 @@
 
   if (isset($_POST['submit']))
   {
+    if ($users_table_fetch)
+    {
+      if (($user_name == $stocked_user_name) || ($email == $stocked_email))
+      {
+        $form_check = "<p class='error'>Username and/or email address already used. Try some others!</p>";
+        return false;
+      }
+    }
+
     if ($password_check == $password)
     {
       // HASHES THE PASSWORD
       $password = password_hash(htmlentities($_POST["password"]), PASSWORD_DEFAULT);
+
       // CREATE UNIQUE ID FOR THE USER
       $random_id_user = genererChaineAleatoire(5). + time();
 
@@ -40,12 +50,20 @@
 
       if ($users_table_insert_new_content)
       {
-        $validation_msg = "<p class = 'valid'>Account created! Let's log in. </p>";
+        $form_check = "</form><p class = 'valid'>Account created! <a href='user_login_form.php'>Let's log in.</a></p>";
       }
     }
     else
     {
-      $pw_check = "Password no";
+      $pw_check = "<p class='error'>Passwords aren't matching.</p>";
+      $form_check = "   </form>
+                        <p class='cta'>Already have an account? <a href='user_login_form.php'>Let's log in!</a></p>";
+      return false;
     }
+  }
+  else
+  {
+    $form_check = "   </form>
+                      <p class='cta'>Already have an account? <a href='user_login_form.php'>Let's log in!</a></p>";
   }
 ?>
