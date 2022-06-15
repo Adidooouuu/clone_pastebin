@@ -2,12 +2,15 @@
   error_reporting(E_ALL);
   ini_set("display_errors", 1);
 
-  include("../data/treatment/form_treatment.php");
+  include("../functions/form_treatment.php");
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <?php require("head.php"); ?>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/style/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Recap</title>
   </head>
   <body>

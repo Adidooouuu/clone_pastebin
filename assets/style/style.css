@@ -162,7 +162,11 @@ textarea, input[type="text"], input[type="password"], input[type="email"], input
   border-radius : var(--border-radius);
   background-color : var(--secondary-color);
   box-shadow : var(--shadow);
-  width : 30ch;
+}
+
+input[type="text"], input[type="password"], input[type="email"], input[type="submit"]
+{
+  width : 50ch;
 }
 
 .fantom
@@ -189,4 +193,14 @@ textarea, input[type="text"], input[type="password"], input[type="email"], input
 .error
 {
   color : red;
+}
+
+.login_options
+{
+  display : flex;
+  flex-flow : column wrap;
+  align-items : center;
+  justify-content : space-around;
+  height : 20vh;
+  padding : 10px;
 }

@@ -1,13 +1,5 @@
 <?php
-
-  if ($_SERVER["PHP_SELF"] == "index.php")
-  {
-    include('config.php');
-  }
-  else
-  {
-    include('../config.php');
-  }
+  include("../config.php");
 
   // DEFINED DATAS
   $hostname = constant("HOST");
@@ -29,7 +21,7 @@
   }
   catch(Exception $e)
   {
-    die('Erreur : ' . $e->getMessage());
+    die("Erreur : " . $e->getMessage());
   }
 
   // PULL DB DATA
@@ -45,6 +37,7 @@
       $stocked_content = $table_content['content'];
       $stocked_random_id = $table_content['random_id'];
       $stocked_creation_date = $table_content['creation_date'];
+      $stocked_creator_random_id = $table_content["random_id_user"];
     }
 
     // USERS

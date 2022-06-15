@@ -1,9 +1,9 @@
 <?php
-  include('../data/connection_to_db/db_connection.php');
-  include("../functions/random_id_function.php");
+  include('../db/db_connection.php');
+  include("random_id_function.php");
 
-    error_reporting(E_ALL);
-    ini_set("display_errors", 1);
+  error_reporting(E_ALL);
+  ini_set("display_errors", 1);
 
   $form_check = "";
   $pw_check = "";
