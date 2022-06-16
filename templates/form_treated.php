@@ -12,6 +12,7 @@
   </head>
   <body>
       <h1><?php echo $stocked_title; ?></h1>
+      <p>By <?php echo $stocked_creator_username; ?></p>
       <span><?php echo $stocked_creation_date; ?></span>
       <div class="content">
         <p><?php echo $stocked_content; ?></p>

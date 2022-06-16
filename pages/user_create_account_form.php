@@ -15,13 +15,13 @@
       <div class="connection_container">
         <h1 class="form_title">Create your account</h1>
         <em><span class="required">*</span> = required</em>
-        <form class="create_account_form" action="user_create_account_form.php" method="post">
+        <form class="create_account_form" action="" method="post">
 
           <label for="username" class="account_label">Username <span class="required">*</span> (max-length : 20 characters)</label>
-          <input type="text" name="username" id="username" autocomplete="on" required>
+          <input type="text" name="username" id="username" autocomplete="on" value="<?php if(isset($user_name)){echo $user_name;} ?>" required>
 
           <label for="email" class="account_label">Email <span class="required">*</span> </label>
-          <input type="email" name="email" id="email" autocomplete="email" required>
+          <input type="email" name="email" id="email" autocomplete="email" value="<?php if(isset($email)){echo $email;} ?>" required>
 
           <label for="password" class="account_label">Password <span class="required">*</span> </label>
           <input type="password" name="password" id="password" autocomplete="new-password" required>
@@ -39,6 +39,9 @@
           <?php
             echo $form_check;
           ?>
+          <p class="back_home">
+            <a href="../index.php">Back home</a>
+          </p>
       </div>
     </div>
   </body>

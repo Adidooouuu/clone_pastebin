@@ -33,10 +33,11 @@
 
     foreach ($table_fetch as $table_content)
     {
-      $stocked_title = $table_content['title'];
-      $stocked_content = $table_content['content'];
-      $stocked_random_id = $table_content['random_id'];
-      $stocked_creation_date = $table_content['creation_date'];
+      $stocked_title = $table_content["title"];
+      $stocked_content = $table_content["content"];
+      $stocked_random_id = $table_content["random_id"];
+      $stocked_creation_date = $table_content["creation_date"];
+      $stocked_creator_username = $table_content["user_name"];
       $stocked_creator_random_id = $table_content["random_id_user"];
     }
 
@@ -48,9 +49,9 @@
 
     foreach ($users_table_fetch as $user_table_content)
     {
-      $stocked_user_name = $user_table_content['username'];
-      $stocked_email = $user_table_content['email'];
-      $stocked_password = $user_table_content['pwd'];
-      $stocked_random_id_user = $user_table_content['random_id_for_user'];
+      $stocked_user_name = $user_table_content["username"];
+      $stocked_email = $user_table_content["email"];
+      $stocked_password = $user_table_content["pwd"];
+      $stocked_random_id_user = $user_table_content["random_id_for_user"];
     }
 ?>

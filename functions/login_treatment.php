@@ -1,6 +1,6 @@
 <?php
-
-  session_start();
+session_start();
+  var_dump($_SESSION);
 
   include('../db/db_connection.php');
   include("random_id_function.php");
@@ -12,43 +12,75 @@
   $welcome = "";
 
   // PULL FORM DATA
-  if ($users_table_fetch)
+  if (isset($_POST['submit']))
   {
-    if (!empty($_POST['username']) && !empty($_POST['password']))
+    $user_name = htmlentities($_POST["username"]);
+    $password = htmlentities($_POST["password"]);
+    if (!empty($user_name) OR !empty($password))
     {
-      $user_name = htmlentities($_POST["username"]);
-      $password = htmlentities($_POST["password"]);
-
-      if (($user_name == $stocked_user_name) && (password_verify($password, $stocked_password)))
+      if (password_verify($password, $stocked_password))
       {
-        $_SESSION =
-  			[
-          // "shared_links" =>
-  				// [
-  				// 	"link_name" => [],
-  				// 	"text_content" => [],
-  				// 	"random_id" => []
-  				// ],
-  				"connect" =>
-  				[
-  					"user_name" => $user_name = $stocked_user_name,
-  					"password" => $password = $stocked_password
-  				]
-  			];
+        $requser_query = "SELECT * FROM users WHERE username = ? AND pwd = ?";
+        $requser = $bdd_connection->prepare($requser_query);
+        $requser->execute(array($user_name, $password));
+        $userexist = $requser->rowCount();
 
-        $_SESSION["Auth_OK"] = true;
+        if ($userexist == 1)
+        {
+          $userinfo = $requser->fetch();
+          $_SESSION["username"] = $userinfo["username"];
+          $_SESSION["user_random_id"] = $userinfo["random_id_for_user"];
+          $_SESSION["Auth_OK"] = true;
 
-        $welcome = "Welcome, " .$_SESSION["user_name"]. "!";
-
-        header("Location: ../index.php");
-        exit;
+          header("Location: ../index.php");
+          exit;
+        }
+        else
+        {
+          $form_check = "<p class='error'>Wrong username or password.</p>";
+          return false;
+        }
       }
-      else
-      {
-        $form_check = "<p class='error'>Username and/or password not found.</p>";
-        $_SESSION["Auth_OK"] = false;
-        return false;
-      }
+      // if (($user_name == $stocked_user_name) && (password_verify($password, $stocked_password)))
+      // {
+      //   $_SESSION =
+  		// 	[
+      //     // "shared_links" =>
+  		// 		// [
+  		// 		// 	"link_name" => [],
+  		// 		// 	"text_content" => [],
+  		// 		// 	"random_id" => []
+  		// 		// ],
+      //
+  		// 		"connect" =>
+  		// 		[
+  		// 			"user_name" => $user_name = $stocked_user_name,
+      //       "random_id" => $random_id_user = $stocked_random_id_user
+  		// 		]
+  		// 	];
+      //
+      //   $_SESSION["Auth_OK"] = true;
+      //
+      //   $welcome = "Welcome, " .$_SESSION["user_name"]. "!";
+      //
+      //   header("Location: ../index.php");
+      //   exit;
+      // }
+      // else
+      // {
+      //   $form_check = "<p class='error'>Username and/or password not found.</p>";
+      //   $_SESSION["Auth_OK"] = false;
+      //   echo $user_name;
+      //   echo $random_id_user;
+      //   echo $stocked_user_name;
+      //   echo $stocked_random_id_user;
+      //   return false;
+      // }
+    }
+    else
+    {
+      $form_check = "<p class='error'>Please fill all the required fields.</p>";
+      return false;
     }
   }
 ?>

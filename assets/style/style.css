@@ -195,7 +195,13 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sub
   color : red;
 }
 
-.login_options
+.recap
+{
+  min-height : 100vh;
+  width : 100%;
+}
+
+.login_options, .recap_titles
 {
   display : flex;
   flex-flow : column wrap;
@@ -203,4 +209,25 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sub
   justify-content : space-around;
   height : 20vh;
   padding : 10px;
+}
+
+hr
+{
+  width : 10ch;
+}
+
+.recap .main_title, .recap .title
+{
+  margin-bottom : 1ch;
+}
+
+.text_content
+{
+  margin-bottom : calc(2.5vh - 0.5px);
+}
+
+.link
+{
+  margin-top : calc(2.5vh - 0.5px);
+  margin-bottom : 1vh;
 }
