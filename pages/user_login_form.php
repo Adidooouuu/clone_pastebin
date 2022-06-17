@@ -19,6 +19,9 @@
           <label for="username" class="account_label">Username <span class="required">*</span> </label>
           <input type="text" name="username" id="username" autocomplete="on" value="<?php if(isset($user_name)){echo $user_name;} ?>" required>
 
+          <label for="email" class="account_label">Email <span class="required">*</span> </label>
+          <input type="email" name="email" id="email" autocomplete="on" value="<?php if(isset($email)){echo $email;} ?>" required>
+
           <label for="password" class="account_label">Password <span class="required">*</span> </label>
           <input type="password" name="password" id="password" autocomplete="current-password" required>
 

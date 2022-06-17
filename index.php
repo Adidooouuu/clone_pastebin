@@ -19,7 +19,7 @@
         if (@$_SESSION["Auth_OK"] == true)
         {
           echo "
-                <h1>Welcome, " .$_SESSION["connect"]["user_name"]. "!</h1>
+                <h1>Welcome, " .$_SESSION["username"]. "!</h1>
                 <p>
                   It's not you? <a href='pages/log_out.php'>Log out!</a>
                 </p>

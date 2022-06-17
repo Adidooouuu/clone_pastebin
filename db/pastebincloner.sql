@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 15 juin 2022 à 14:54
+-- Généré le : jeu. 16 juin 2022 à 15:09
 -- Version du serveur : 8.0.27
 -- Version de PHP : 7.4.26
 
@@ -34,18 +34,10 @@ CREATE TABLE IF NOT EXISTS `shared_link` (
   `content` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `random_id` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `random_id_user` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `user_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT 'Guest',
+  `random_id_user` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8mb3;
-
---
--- Déchargement des données de la table `shared_link`
---
-
-INSERT INTO `shared_link` (`id`, `title`, `content`, `random_id`, `creation_date`, `random_id_user`) VALUES
-(30, 'test 5468 fiusyfi', 'jhuikhgbjhghj242452\r\njgrehg', '12356efzeg4', '2022-06-08 14:54:50', ''),
-(31, 'test 565', 'vjsfuhvjdhj idvuos', '456efzfvsdv', '2022-06-08 14:56:57', ''),
-(107, 'shared_text_name', '      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n    ', 'hh5ni1655304807', '2022-06-15 16:53:27', '');
+) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -61,14 +53,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `pwd` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `random_id_for_user` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `pwd`, `random_id_for_user`) VALUES
-(86, 'test', 'user@email.com', '$2y$10$.bsi68WkDMhlk3CSUioQGu0AtO0pgea54aIDf..mGBgOXi6Hb943W', '0WQaR1655304051');
+(99, 'test', 'test@example.com', '$2y$10$6aoDXiS0j9ENsj7jEJ2oo.4H05u80t9qxmnR4wznFv/dxwh8VmBcG', 'lXir61655391901');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

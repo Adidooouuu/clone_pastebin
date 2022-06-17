@@ -33,21 +33,21 @@
 
             if (filter_var($email, FILTER_VALIDATE_EMAIL))
             {
-              $reqmail = $bdd_connection->prepare("SELECT * FROM $users_table WHERE email = ?");
+              $reqmail = $bdd_connection->prepare("SELECT * FROM $users_table WHERE email = ?;");
               $reqmail->execute(array($email));
               $mailexist = $reqmail->rowCount();
 
-              $reqpseudo = $bdd_connection->prepare("SELECT * FROM $users_table WHERE username = ?");
+              $reqpseudo = $bdd_connection->prepare("SELECT * FROM $users_table WHERE username = ?;");
               $reqpseudo->execute(array($username));
               $pseudoexist = $reqpseudo->rowCount();
 
-              if (($mailexist == 0) && ($pseudoexist == 0))
+              if (($mailexist === 0) && ($pseudoexist === 0))
               {
                 // CREATES UNIQUE ID FOR THE USER
                 $random_id_user = genererChaineAleatoire(5). + time();
 
                 // INSERTS DATA TO THE TABLE USERS
-                $users_table_add_query = "INSERT INTO users (username, email, pwd, random_id_for_user) VALUES (?, ?, ?, ?)";
+                $users_table_add_query = "INSERT INTO $users_table (username, email, pwd, random_id_for_user) VALUES (?, ?, ?, ?);";
                 $users_table_insert_new_content = $bdd_connection->prepare($users_table_add_query);
                 $users_table_insert_new_content->execute(array($user_name, $email, $password, $random_id_user));
 

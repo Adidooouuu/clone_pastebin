@@ -9,22 +9,23 @@ session_start();
   ini_set("display_errors", 1);
 
   $form_check = "";
-  $welcome = "";
+  // $welcome = "";
 
-  // PULL FORM DATA
   if (isset($_POST['submit']))
   {
+    // PULL FORM DATA
     $user_name = htmlentities($_POST["username"]);
+    $email = htmlentities($_POST["email"]);
     $password = htmlentities($_POST["password"]);
-    if (!empty($user_name) OR !empty($password))
+    if (!empty($user_name) && !empty($email) && !empty($password))
     {
+      // CHECKS IF THE USERNAME IS IN THE DB, IF YES CREATES THE SESSION
+      $requser_query = "SELECT * FROM $users_table WHERE username = ? AND email = ?;";
+      $requser = $bdd_connection->prepare($requser_query);
+      $requser->execute(array($user_name, $email));
+      $userexist = $requser->rowCount();
       if (password_verify($password, $stocked_password))
       {
-        $requser_query = "SELECT * FROM users WHERE username = ? AND pwd = ?";
-        $requser = $bdd_connection->prepare($requser_query);
-        $requser->execute(array($user_name, $password));
-        $userexist = $requser->rowCount();
-
         if ($userexist == 1)
         {
           $userinfo = $requser->fetch();
@@ -37,45 +38,15 @@ session_start();
         }
         else
         {
-          $form_check = "<p class='error'>Wrong username or password.</p>";
+          $form_check = "<p class='error'>Wrong identifiers.</p>";
           return false;
         }
       }
-      // if (($user_name == $stocked_user_name) && (password_verify($password, $stocked_password)))
-      // {
-      //   $_SESSION =
-  		// 	[
-      //     // "shared_links" =>
-  		// 		// [
-  		// 		// 	"link_name" => [],
-  		// 		// 	"text_content" => [],
-  		// 		// 	"random_id" => []
-  		// 		// ],
-      //
-  		// 		"connect" =>
-  		// 		[
-  		// 			"user_name" => $user_name = $stocked_user_name,
-      //       "random_id" => $random_id_user = $stocked_random_id_user
-  		// 		]
-  		// 	];
-      //
-      //   $_SESSION["Auth_OK"] = true;
-      //
-      //   $welcome = "Welcome, " .$_SESSION["user_name"]. "!";
-      //
-      //   header("Location: ../index.php");
-      //   exit;
-      // }
-      // else
-      // {
-      //   $form_check = "<p class='error'>Username and/or password not found.</p>";
-      //   $_SESSION["Auth_OK"] = false;
-      //   echo $user_name;
-      //   echo $random_id_user;
-      //   echo $stocked_user_name;
-      //   echo $stocked_random_id_user;
-      //   return false;
-      // }
+      else
+      {
+        $form_check = "<p class='error'>Wrong identifiers.</p>";
+        return false;
+      }
     }
     else
     {
