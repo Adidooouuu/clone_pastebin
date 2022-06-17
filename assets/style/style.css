@@ -42,6 +42,11 @@ a:hover
   text-decoration : underline;
 }
 
+li
+{
+  list-style : none;
+}
+
 [class*="container"]
 {
   display : flex;
@@ -61,13 +66,18 @@ a:hover
   flex-flow : row wrap;
 }
 
-.connection_container
+.connection_container, .modify_infos_container
 {
   flex-flow : column wrap;
   align-items : center;
 }
 
-.main_form, .login_form, .create_account_form
+.modify_infos_container
+{
+  min-height : 80vh;
+}
+
+.main_form, .login_form, .create_account_form, .modify_infos_form
 {
   display : flex;
   flex-flow : column wrap;
@@ -140,8 +150,13 @@ input[type="submit"]
   border : none;
   width : 153px;
   height : 35px;
-  margin : 30px auto 10px auto;
+  margin-top : 30px;
   cursor : pointer;
+}
+
+.create_account_form input[type="submit"], .login_form input[type="submit"]
+{
+  margin : 30px auto 10px auto;
 }
 
 input[type="submit"]:hover
@@ -201,7 +216,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sub
   width : 100%;
 }
 
-.login_options, .recap_titles
+.login_options, .recap_titles, .account_infos
 {
   display : flex;
   flex-flow : column wrap;
@@ -209,6 +224,11 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sub
   justify-content : space-around;
   height : 20vh;
   padding : 10px;
+}
+
+.account_infos li
+{
+  text-align : center;
 }
 
 hr
