@@ -11,10 +11,10 @@
   // PULL FORM DATA
   if (isset($_POST['submit']))
   {
-    $user_name = htmlentities($_POST["username"]);
-    $email = htmlentities($_POST["email"]);
-    $password = htmlentities($_POST["password"]);
-    $password_check = htmlentities($_POST["password_check"]);
+    $user_name = htmlspecialchars($_POST["username"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $password = htmlspecialchars($_POST["password"]);
+    $password_check = htmlspecialchars($_POST["password_check"]);
 
     if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['password_check']))
     {
@@ -29,7 +29,7 @@
           if ($password_check == $password)
           {
             // HASHES THE PASSWORD
-            $password = password_hash(htmlentities($_POST["password"]), PASSWORD_DEFAULT);
+            $password = password_hash(htmlspecialchars($_POST["password"]), PASSWORD_DEFAULT);
 
             if (filter_var($email, FILTER_VALIDATE_EMAIL))
             {
@@ -38,10 +38,15 @@
               $mailexist = $reqmail->rowCount();
 
               $reqpseudo = $bdd_connection->prepare("SELECT * FROM $users_table WHERE username = ?;");
-              $reqpseudo->execute(array($username));
+              $reqpseudo->execute(array($user_name));
               $pseudoexist = $reqpseudo->rowCount();
 
-              if (($mailexist === 0) && ($pseudoexist === 0))
+              if (($mailexist === 1) || ($pseudoexist === 1))
+              {
+                $form_check = "<p class='error'>Username and/or email address already used. Try some others!</p>";
+                return false;
+              }
+              else
               {
                 // CREATES UNIQUE ID FOR THE USER
                 $random_id_user = genererChaineAleatoire(5). + time();
@@ -52,11 +57,6 @@
                 $users_table_insert_new_content->execute(array($user_name, $email, $password, $random_id_user));
 
                 $form_check = "</form><p class = 'valid'>Account created! <a href='user_login_form.php'>Let's log in.</a></p>";
-              }
-              else
-              {
-                $form_check = "<p class='error'>Username and/or email address already used. Try some others!</p>";
-                return false;
               }
             }
             else
