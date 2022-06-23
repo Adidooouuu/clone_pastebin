@@ -61,7 +61,8 @@
             }
             else
             {
-              $form_check = "<p class='error'>Please provide a valid email address.</p>";
+              $form_check = "</form>
+                              <p class='error'>Please provide a valid email address.</p>";
               return false;
             }
           }
@@ -76,7 +77,8 @@
     }
     else
     {
-      $form_check = "<p class='error'>Please fill all the required fields.</p>";
+      $form_check = "</form>
+                      <p class='error'>Please fill all the required fields.</p>";
       return false;
     }
   }

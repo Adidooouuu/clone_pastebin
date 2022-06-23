@@ -15,7 +15,7 @@
       <div class="connection_container">
         <h1 class="form_title">Login to your account</h1>
         <em><span class="required">*</span> = required</em>
-        <form class="login_form" action="" method="post">
+        <form class="login_form" action="user_login_form.php" method="post">
           <label for="username" class="account_label">Username <span class="required">*</span> </label>
           <input type="text" name="username" id="username" autocomplete="on" value="<?php if(isset($user_name)){echo $user_name;} ?>" required>
 

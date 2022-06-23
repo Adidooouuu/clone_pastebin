@@ -5,8 +5,8 @@
   if (isset($_POST['submit']))
   {
     // PULL FORM DATA
-    $link_name = htmlentities($_POST["name_of_paste_sharing"]);
-    $text_content = htmlentities($_POST["text_content"]);
+    $link_name = htmlspecialchars($_POST["name_of_paste_sharing"]);
+    $text_content = htmlspecialchars($_POST["text_content"]);
 
     // URL WITH RANDOM ID
     $random_id = genererChaineAleatoire(5). + time();

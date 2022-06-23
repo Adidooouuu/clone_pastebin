@@ -13,9 +13,9 @@ session_start();
   if (isset($_POST['submit']))
   {
     // PULL FORM DATA
-    $user_name = htmlentities($_POST["username"]);
-    $email = htmlentities($_POST["email"]);
-    $password = htmlentities($_POST["password"]);
+    $user_name = htmlspecialchars($_POST["username"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $password = htmlspecialchars($_POST["password"]);
     if (!empty($user_name) && !empty($email) && !empty($password))
     {
       // CHECKS IF THE USERNAME IS IN THE DB, IF YES CREATES THE SESSION

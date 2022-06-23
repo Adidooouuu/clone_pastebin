@@ -15,7 +15,7 @@
       <div class="connection_container">
         <h1 class="form_title">Create your account</h1>
         <em><span class="required">*</span> = required</em>
-        <form class="create_account_form" action="" method="post">
+        <form class="create_account_form" action="user_create_account_form.php" method="post">
 
           <label for="username" class="account_label">Username <span class="required">*</span> (max-length : 20 characters)</label>
           <input type="text" name="username" id="username" autocomplete="on" value="<?php if(isset($user_name)){echo $user_name;} ?>" required>
