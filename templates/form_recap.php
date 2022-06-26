@@ -1,5 +1,6 @@
 <?php
   session_start();
+  var_dump($_SESSION);
   error_reporting(E_ALL);
   ini_set("display_errors", 1);
 
@@ -24,7 +25,7 @@
           <?php
             if (@$_SESSION["Auth_OK"] == true)
             {
-              echo "<em class='creator_username'>By ".$_SESSION['connect']['user_name']."</em>";
+              echo "<em class='creator_username'>By ".$_SESSION['username']."</em>";
             }
             else
             {

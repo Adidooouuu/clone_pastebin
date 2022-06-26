@@ -6,7 +6,7 @@
   $username = constant('USER');
   $bdd = constant('DBNAME');
   $pwd = constant('PWD');
-  $table = constant('LINK_TABLE');
+  $links_table = constant('LINK_TABLE');
   $users_table = constant('USERS_TABLE');
 
   // DB CONNECTION
@@ -25,23 +25,23 @@
     die("Erreur : " . $e->getMessage());
   }
 
-  // PULL DB DATA
-    // SHARED LINK
-    $table_query = "SELECT * FROM $table";
-    $table_statement = $bdd_connection->prepare($table_query);
-    $table_statement->execute();
-    $table_fetch = $table_statement->fetchAll();
-
-    foreach ($table_fetch as $table_content)
-    {
-      $stocked_title = $table_content["title"];
-      $stocked_content = $table_content["content"];
-      $stocked_random_id = $table_content["random_id"];
-      $stocked_creation_date = $table_content["creation_date"];
-      $stocked_creator_username = $table_content["user_name"];
-      $stocked_creator_random_id = $table_content["random_id_user"];
-    }
-
+  // // PULL DB DATA
+  //   // SHARED LINK
+  //   $links_table_query = "SELECT * FROM $links_table";
+  //   $links_table_statement = $bdd_connection->prepare($links_table_query);
+  //   $links_table_statement->execute();
+  //   $links_table_fetch = $links_table_statement->fetchAll();
+  //
+  //   foreach ($links_table_fetch as $links_table_content)
+  //   {
+  //     $stocked_title = $links_table_content["title"];
+  //     $stocked_content = $links_table_content["content"];
+  //     $stocked_random_id = $links_table_content["random_id"];
+  //     $stocked_creation_date = $links_table_content["creation_date"];
+  //     $stocked_creator_username = $links_table_content["user_name"];
+  //     $stocked_creator_random_id = $links_table_content["random_id_user"];
+  //   }
+  //
     // USERS
     $users_table_query = "SELECT * FROM $users_table";
     $users_table_statement = $bdd_connection->prepare($users_table_query);

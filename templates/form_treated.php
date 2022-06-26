@@ -1,4 +1,8 @@
 <?php
+  session_start();
+  error_reporting(E_ALL);
+  ini_set("display_errors", 1);
+
   include("../functions/form_treatment.php");
 ?>
 <!DOCTYPE html>
@@ -8,14 +12,27 @@
     <link rel="stylesheet" href="../assets/style/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?php echo $stocked_title; ?></title>
+    <title><?php if (isset($_GET["s"]) && (strlen($_GET["s"]) === 15)){ echo $_GET["s"]; } else { header("Location: ../index.php"); exit; } ?></title>
   </head>
   <body>
-      <h1><?php echo $stocked_title; ?></h1>
-      <p>By <?php echo $stocked_creator_username; ?></p>
-      <span><?php echo $stocked_creation_date; ?></span>
-      <div class="content">
-        <p><?php echo $stocked_content; ?></p>
-      </div>
+    <?php
+      if (isset($_GET["s"]) && (strlen($_GET["s"]) === 15))
+      {
+        $reqlink_query = "SELECT * FROM $links_table WHERE random_id = ?;";
+        $reqlink = $bdd_connection->prepare($reqlink_query);
+        $reqlink->execute(array($_GET["s"]));
+        $linkinfo = $reqlink->fetch();
+      }
+      else
+      {
+        header("Location: ../index.php");
+        exit;
+      }
+    ?>
+
+    <h1><?php echo $linkinfo["title"]; ?></h1>
+    <em>Shared by: <?php echo $linkinfo["user_name"] ?></em>
+    <b>Created at: <?php echo $linkinfo["creation_date"] ?></b>
+    <p><?php echo $linkinfo["content"] ?></p>
   </body>
 </html>

@@ -44,6 +44,18 @@
           ?>
           <input type="submit" name="submit" value="Modify">
         </form>
+
+        <?php
+          if ()
+          {
+        ?>
+        <?php
+          }
+          else
+          {
+            echo "No recent links. Create one <a href='../index.php'>right here!</a>";
+          }
+        ?>
       <?php
         }
         else
