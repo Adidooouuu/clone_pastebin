@@ -1,6 +1,8 @@
 <?php
   session_start();
+  include('../db/db_connection.php');
   include("../functions/show_and_modify_profile_treatment.php");
+  include("../functions/show_user_links.php");
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -28,7 +30,22 @@
           <a href="log_out.php">Log out</a>
         </p>
       </header>
-      <div class="modify_infos_container">
+      <section class="last_links">
+        <h2>Your last shared content</h2>
+        <?php
+          while ($userlinksinfo = $requserlinks->fetch())
+          {
+        ?>
+        <article class="shared_content_recap">
+          <h1><?php echo $userlinksinfo["title"]; ?></h1>
+          <em><?php echo $userlinksinfo["creation_date"]; ?></em>
+          <p><?php echo $userlinksinfo["content"]; ?></p>
+        </article>
+        <?php
+          }
+        ?>
+      </section>
+      <aside class="modify_infos_container">
         <form class="modify_infos_form" action="" method="post">
           <h2 class="form_title">Modify your infos</h2>
           <label for="new_username">New username: </label>
@@ -44,26 +61,14 @@
           ?>
           <input type="submit" name="submit" value="Modify">
         </form>
-
-        <?php
-          if ()
-          {
-        ?>
-        <?php
-          }
-          else
-          {
-            echo "No recent links. Create one <a href='../index.php'>right here!</a>";
-          }
-        ?>
-      <?php
-        }
-        else
-        {
-          header("Location: ../index.php");
-          exit;
-        }
-      ?>
-    </div>
+    </aside>
+  <?php
+    }
+    else
+    {
+      header("Location: ../index.php");
+      exit;
+    }
+  ?>
   </body>
 </html>

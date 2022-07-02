@@ -1,5 +1,5 @@
 <?php
-  include('../db/db_connection.php');
+  // include('../db/db_connection.php');
 
   $form_check = "";
 
@@ -37,10 +37,17 @@
           }
           else
           {
+            // UPDATES THE USERNAME ON THE PROFILE
             $users_table_add_query = "UPDATE $users_table SET username = ? WHERE random_id_for_user = ?;";
             $users_table_insert_new_content = $bdd_connection->prepare($users_table_add_query);
             $users_table_insert_new_content->execute(array($new_username, $_SESSION["user_random_id"]));
 
+            // UPDATES THE USERNAME ON THE PREVIOUS LINKS
+            $links_table_username_update_query = "UPDATE $links_table SET user_name = ? WHERE random_id_user = ?;";
+            $links_table_username_update = $bdd_connection->prepare($links_table_username_update_query);
+            $links_table_username_update->execute(array($new_username, $_SESSION["user_random_id"]));
+
+            // UPDATES THE USERNAME DISPLAYED WITHIN THE SESSION
             $_SESSION["username"] = $new_username;
           }
         }
